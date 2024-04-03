@@ -7,6 +7,7 @@ clear all, clc, close all
 sigma = 10;
 beta = 8/3;
 rho = 20;
+%rho=28;
 nu=1;
 tspan=0:.001:50;
 X0_1 = [1 1 1 2.5 2.5];
@@ -35,5 +36,6 @@ patch(c1,c2,c,'EdgeColor','interp','Marker','.')
      xlabel('X', 'fontsize', 14)
     ylabel('Y', 'fontsize', 14)
     title('Bounded Path Planning of Rho=20', 'fontsize', 14)
+     title('Bounded Path Planning of Rho=28', 'fontsize', 14)
    grid on;
    
