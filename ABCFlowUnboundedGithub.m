@@ -1,12 +1,6 @@
 %%
 clear all, clc, close all
 
-%Defining Boundaries
- xmax=5;
- xmin=0;
- ymax=5;
- ymin=0;
-
 %Definining parameters
 A=1;
 B=0.5;
