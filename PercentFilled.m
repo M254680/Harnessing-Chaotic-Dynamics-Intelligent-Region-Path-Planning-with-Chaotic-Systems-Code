@@ -1,7 +1,8 @@
 %%
 clc, close all, clear all
-
+% input figure within x and y limits
 img = imread('ImageAnalysis_BoundedBot1000Sat10pingat1nuRHO28_X&Y.png');
+%image analysis
 img_gray = rgb2gray(img);
 threshold = graythresh(img_gray);
 img_bw = imbinarize(img_gray, threshold);
