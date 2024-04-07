@@ -1,27 +1,20 @@
 %%
-% Bounded Bot Running for 1000 seconds with 2 pings per second at velocity of 1
-
-%
 clear all, clc, close all
 
-%Defining Variables
+%Defining Limits
 xmax=5;
 xmin=0;
 ymax=5;
 ymin=0;
-
+%Defining Parameters
 sigma = 10;
 beta = 8/3;
 rho = 28;
-nu=2;
-
-%tspan=0:5:100;
-tspan=0:1:5;
-
-%Lorenz System 
+nu=1;
+tspan=0:.001:50;
 X0_1 = [1 1 1 2.5 2.5];
 
-
+%Lorenz System 
 lorenz = @(t, X) [ -1*beta * X(1)+ X(2).*X(3);
  -1*sigma*(X(2)-X(3));
 -1*X(1).*X(2)+rho.*X(2)-X(3);
@@ -29,7 +22,7 @@ nu*cos(X(1) );
 nu*sin(X(1) )
     ];
 
-
+%solving ODE
 [t1, X1] = ode45(lorenz, tspan, X0_1);
 
 for k = 1:length(t1)
@@ -86,27 +79,20 @@ else
             end
 end
 end
-
+%plotting
 c1 = X1(:,4) ;
 c2 = X1(:,5) ;
-
 c1(end+1) = NaN ;
 c2(end+1) = NaN;
-%c=1:length(c1);
 c=ones(length(c1),1);
-% 
 figure
-%patch(c1,c2,c,'EdgeColor','interp','Marker','.','MarkerFaceColor','flat','MarkerSize', 15);
-%patch(c1,c2,c,'EdgeColor','interp','Marker','.','MarkerSize', 15);
+
 patch(c1,c2,c,'EdgeColor','interp','Marker','.')
      xlabel('X', 'fontsize', 14)
     ylabel('Y', 'fontsize', 14)
-%    xlim([xmin,xmax])
-%    ylim([ymin,ymax])
+    xlim([xmin,xmax])
+    ylim([ymin,ymax])
     title('Bounded Path Planning of Rho=28', 'fontsize', 14)
-   % grid on;
+    grid on;
    
-   XYcord=X1(:,4:5);
-   
-   
-save("TESTLorenzBounded.mat",'XYcord')
+
